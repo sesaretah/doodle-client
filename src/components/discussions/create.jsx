@@ -7,9 +7,9 @@ import {
 import { dict} from '../../Dict';
 import ModelStore from "../../stores/ModelStore";
 import * as MyActions from "../../actions/MyActions";
-import CourseForm from "../../containers/courses/form"
+import DiscussionForm from "../../containers/discussions/form"
 
-export default class CourseCreate extends Component {
+export default class DiscussionCreate extends Component {
   constructor() {
     super();
     this.submit = this.submit.bind(this);
@@ -18,8 +18,8 @@ export default class CourseCreate extends Component {
 
     this.state = {
       token: window.localStorage.getItem('token'),
-      course: {},
-      privateCourse: true,
+      discussion: {},
+      privateDiscussion: true,
     }
   }
 
@@ -33,8 +33,8 @@ export default class CourseCreate extends Component {
   }
 
   submit(){
-    var data = {title: this.state.title, private: this.state.privateCourse}
-    MyActions.setInstance('courses', data, this.state.token);
+    var data = {title: this.state.title, private: this.state.privateDiscussion}
+    MyActions.setInstance('discussions', data, this.state.token);
   }
 
 
@@ -44,18 +44,18 @@ export default class CourseCreate extends Component {
 
   setInstance(){
     const self = this;
-    this.$f7router.navigate('/courses/');
+    this.$f7router.navigate('/discussions/');
   }
 
 
 
   render() {
-    const {course} = this.state;
+    const {discussion} = this.state;
     return (
       <Page>
-        <Navbar title={dict.course_form} backLink={dict.back} />
-        <BlockTitle>{dict.course_form}</BlockTitle>
-        <CourseForm course={course} submit={this.submit} editing={true} handleChange={this.handleChangeValue}/>
+        <Navbar title={dict.discussion_form} backLink={dict.back} />
+        <BlockTitle>{dict.discussion_form}</BlockTitle>
+        <DiscussionForm discussion={discussion} submit={this.submit} editing={true} handleChange={this.handleChangeValue}/>
       </Page>
     );
   }

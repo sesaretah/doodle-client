@@ -265,6 +265,7 @@ Extra borders for main view and left panel for iOS theme when it behaves as pane
   background-size: cover;
   background-position: center;
   color: #fff;
+  text-shadow: 1px 1px 5px black;
 }
 
 .row {
@@ -345,3 +346,35 @@ li.media-item .item-media img {
 .fs-10 {
   font-size: 10px !important;
 }
+
+.h-40 {
+  height: 40px !important;
+  min-height: 40px !important;
+  overflow: hidden;
+}
+
+.item-media img {
+  border-radius: 50%;
+}
+
+.board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.big-whiteboard-component-container { 
+  position: relative !important;
+}
+
+.big-whiteboard-component-container .whitebord-box { 
+  background: #44475a;
+  border-radius: 7px;
+}
+
+.big-whiteboard-component-container .whiteborad, .big-whiteboard-component-container .whiteborad-follow {
+  border: 4px solid #6272a4;
+  top: 26px;
+  left: 26px;
+}
+

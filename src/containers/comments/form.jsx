@@ -1,21 +1,24 @@
 import React from "react";
 import { List, ListInput, BlockTitle, Block, Link, Button, Card, CardHeader, CardFooter} from 'framework7-react';
 import { dict} from '../../Dict';
-
+import { Editor } from 'react-draft-wysiwyg';
+import { fa} from '../../js/fa';
 const CommentForm = (props) => {
     return (
       <Card>
-        <CardHeader>{dict.comment_form}</CardHeader>
         <List form>
-        <ListInput
-            label={dict.comment}
-            type="textarea"
-            placeholder='...'
-            maxlength='300'
-            resizable
-            onInput={(e) => {
-              props.handleChange({ commentContent: e.target.value})
-            }}
+        <Editor
+              editorState={props.editorState}
+              placeholder={dict.content}
+              //localization={{
+               // locale: 'fa',
+               // translations: fa
+              //}}
+              toolbar={{
+                options: ['inline', 'list', 'link'],
+                inline: { options: ['bold', 'italic', 'underline'] },
+              }}
+              onEditorStateChange={props.onEditorStateChange}
             />
         </List>
         <CardFooter>

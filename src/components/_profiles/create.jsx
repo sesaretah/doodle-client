@@ -64,7 +64,6 @@ export default class ProfileCreate extends Component {
 
   componentDidMount(){
     this.loadData();
-
   }
 
   loadData(){

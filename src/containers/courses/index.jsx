@@ -2,7 +2,7 @@ import React from "react";
 import { Page, Navbar, List, BlockTitle, ListItem, Fab, Icon,Preloader, Block} from 'framework7-react';
 import CourseList from "./list"
 import { dict} from '../../Dict';
-
+import { BigWhiteboard } from 'react-component-whiteboard'
 const CourseIndex = (props) => {
   return(
     <Page>
@@ -13,6 +13,10 @@ const CourseIndex = (props) => {
         <Icon ios="f7:add" aurora="f7:add" md="material:add"></Icon>
         <Icon ios="f7:close" aurora="f7:close" md="material:close"></Icon>
       </Fab>
+      <div className='board'>
+        <BigWhiteboard />
+      </div>
+      
       <CourseList courses={props.courses}/>
     </Page>
   )

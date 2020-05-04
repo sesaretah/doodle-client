@@ -150,5 +150,8 @@ export const dict = {
   'private':'خصوصی ',
   'course_type':'نوع درس',
   'select_appropriate_title': 'عنوانی مناسب انتخاب کنید',
-  'write_appropriate_description':'شرحی از اهداف و روش ها بنویسید'
+  'write_appropriate_description':'شرحی از اهداف و روش ها بنویسید',
+  'description':'شرح ',
+  'drag_or_browse': 'فایل مورد نظر را اینجا بیاندازید یا کلیک کنید',
+  'attachment' : 'فایل های پیوست'
 };

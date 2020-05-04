@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 import {
   Page,
   Navbar,
-  List,
-  ListItem,
-  ListInput,
-  Toggle,
   BlockTitle,
-  Row,
-  Button,
-  Range,
-  Block,
-  Icon
 } from 'framework7-react';
 import { dict} from '../../Dict';
 import ModelStore from "../../stores/ModelStore";
@@ -31,17 +22,16 @@ export default class ProfileCreate extends Component {
     this.submitFields = this.submitFields.bind(this);
     this.onDrop = this.onDrop.bind(this);    
     this.getList = this.getList.bind(this);
-    
-    
-    this.getList = this.getList.bind(this);
 
     this.state = {
-      profile: {},
+      name: null,
+      surename: null,
       metas: null,
+      metaId: null,
+      actuals: null,
       token: window.localStorage.getItem('token'),
       fields: [],
-      name: 'dd',
-      surename: '',
+      id: null, 
       pictures: [],
       avatar: null,
     }
@@ -52,23 +42,24 @@ export default class ProfileCreate extends Component {
     ModelStore.on("got_instance", this.getInstance);
     ModelStore.on("set_instance", this.getInstance);
     ModelStore.on("deleted_instance", this.getInstance);
-    ModelStore.on("got_list", this.getList);
+    ModelStore.on("file_posted", this.getInstance);    
   }
 
   componentWillUnmount() {
     ModelStore.removeListener("got_instance", this.getInstance);
     ModelStore.removeListener("set_instance", this.getInstance);
     ModelStore.removeListener("deleted_instance", this.getInstance);
-    ModelStore.removeListener("got_list", this.getList);
+    ModelStore.removeListener("file_posted", this.getInstance);
   }
 
   componentDidMount(){
     this.loadData();
-
   }
 
   loadData(){
-    MyActions.getList('metas', this.state.page);
+    if (this.$f7route.params['profileId']) {
+      MyActions.getInstance('profiles', this.$f7route.params['profileId']);
+    }
   }
 
   onDrop(picture) {
@@ -109,6 +100,7 @@ export default class ProfileCreate extends Component {
     }
   }
 
+
   setInstance(){
     const self = this;
     this.$f7router.navigate('/profiles/');
@@ -119,10 +111,14 @@ export default class ProfileCreate extends Component {
     var klass = ModelStore.getKlass()
     if (profile && klass === 'Profile') {
       this.setState({
+        id: profile.id, 
         metas: profile.metas,
-        profile: profile
+        name: profile.name,
+        surename : profile.surename,
+        avatar: profile.avatar
       });
     }
+    console.log(profile)
   }
 
 
@@ -143,7 +139,7 @@ export default class ProfileCreate extends Component {
 
 
   render() {
-    const {profile, metas, name, avatar, surename} = this.state;
+    const {name, surename, avatar,metas, actuals} = this.state;
     return (
       <Page>
         <Navbar title={dict.profile_form} backLink={dict.back} />
@@ -153,3 +149,4 @@ export default class ProfileCreate extends Component {
     );
   }
 }
+

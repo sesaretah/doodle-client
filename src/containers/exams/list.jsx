@@ -3,26 +3,26 @@ import { List, Card, CardHeader, CardContent, CardFooter, Link, Row, Col } from 
 import crypto from 'crypto-js';
 import { dict } from "../../Dict";
 
-const CourseList = (props) => {
+const ExamList = (props) => {
 
-  if (props.courses) {
+  if (props.exams) {
     return (
       <Row>
-        {props.courses.map((course) =>
+        {props.exams.map((exam) =>
           <Col width="50" tabletWidth="33">
             <Card className="demo-card-header-pic">
               <CardHeader
                 className="no-border"
                 valign="bottom"
                 style={{ backgroundImage: 'url(https://cdn.framework7.io/placeholder/nature-1000x600-1.jpg)' }}
-              >{course.title}</CardHeader>
+              >{exam.title}</CardHeader>
               <CardContent>
                 <p className="date">Posted on January 21, 2015</p>
-                <p>{course.description}</p>
+                <p>{exam.description}</p>
               </CardContent>
               <CardFooter>
                 <Link></Link>
-                <Link href={'/courses/' + course.id}>{dict.more}</Link>
+                <Link href={'/exams/' + exam.id}>{dict.more}</Link>
               </CardFooter>
             </Card>
           </Col>
@@ -33,4 +33,4 @@ const CourseList = (props) => {
     return (<ul></ul>)
   }
 }
-export default CourseList;
+export default ExamList;

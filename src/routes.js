@@ -13,7 +13,17 @@ import CourseShow from './components/courses/show';
 import CourseIndex from './components/courses/index';
 import CourseCreate from './components/courses/create';
 import CourseUpdate from './components/courses/update';
+import CourseCanvas from './containers/courses/canvas';
 
+import DiscussionShow from './components/discussions/show';
+import DiscussionIndex from './components/discussions/index';
+import DiscussionCreate from './components/discussions/create';
+import DiscussionUpdate from './components/discussions/update';
+
+import ExamShow from './components/exams/show';
+import ExamIndex from './components/exams/index';
+import ExamCreate from './components/exams/create';
+import ExamUpdate from './components/exams/update';
 
 import ProfileShow from './components/profiles/show';
 import ProfileIndex from './components/profiles/index';
@@ -63,6 +73,10 @@ export default [
   },
 
   {
+    path: '/courses/canvas',
+    component: CourseCanvas,
+  },
+  {
     path: '/courses/',
     component: CourseIndex,
   },
@@ -77,6 +91,40 @@ export default [
   {
     path: '/courses/:courseId',
     component: CourseShow,
+  },
+
+  {
+    path: '/discussions/',
+    component: DiscussionIndex,
+  },
+  {
+    path: '/discussions/:courseId/edit',
+    component: DiscussionUpdate,
+  },
+  {
+    path: '/discussions/new',
+    component: DiscussionCreate,
+  },
+  {
+    path: '/discussions/:discussionId',
+    component: DiscussionShow,
+  },
+
+  {
+    path: '/exams/',
+    component: ExamIndex,
+  },
+  {
+    path: '/exams/:examId/edit',
+    component: ExamUpdate,
+  },
+  {
+    path: '/exams/new',
+    component: ExamCreate,
+  },
+  {
+    path: '/exams/:examId',
+    component: ExamShow,
   },
 
   {
